@@ -9,13 +9,6 @@ function App() {
   var video, liveView , h1 , model = undefined , children = [] , remove_1 = [] , remove_2 , after_remove_1, after_remove_2;
   const videoRef = useRef(null);
   const remove_ref = useRef(null);
-  const for_interview = "hello world";
-  var hello;
-  var a = [1 , 2, 3, 4];
-
-  a.splice(2 , 1 , "a");
-  console.log(a)
-  
 
   useEffect(() => {
     video = document.getElementById("webcam");
@@ -34,17 +27,13 @@ function App() {
     videoRef.current.srcObject = null;
 
     var stream = await navigator.mediaDevices.getUserMedia({ video: true, })
-    videoRef.current.srcObject = await stream;
+    videoRef.current.srcObject = stream;
 
     cocoSsd.load().then(function(loadedModel) {
       model = loadedModel;
       predictWebcam();
-      hello = for_interview.match("thanks world")
-    console.log(hello);
     });
   }
-
-
 
   function predictWebcam() {
       if (videoRef.current.srcObject != null) {
@@ -57,7 +46,6 @@ function App() {
             remove_1[i].className = "after_remove_div";
             remove_2[i].className = "after_remove_p";
           } 
-          
         }
 
         for (let i = 0; i < children.length; i++) {
